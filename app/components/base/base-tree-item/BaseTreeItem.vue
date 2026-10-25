@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cn } from '../../../utils/tailwind.utils';
+import { useTreeLine } from '../../../utils/tree-line';
 import IconChevronDown from '../../icons/IconChevronDown.vue';
 import IconChevronRight from '../../icons/IconChevronRight.vue';
 import { BaseCollapsible } from '../base-collapsible';
@@ -17,6 +18,9 @@ const emit = defineEmits<{
   select: [];
   'update:open': [value: boolean];
 }>();
+
+const { childActive } = useTreeLine(() => props.selected);
+const lineActive = computed(() => props.selected || childActive.value);
 
 function onToggleClick(event: MouseEvent) {
   event.stopPropagation();
@@ -63,9 +67,9 @@ function onSelectClick() {
       </div>
     </template>
 
-    <div class="ml-x-sm flex flex-col gap-tiny border-l border-accent pl-md">
+    <BaseRevealList :active="lineActive">
       <slot />
-    </div>
+    </BaseRevealList>
   </BaseCollapsible>
 
   <div
