@@ -3,8 +3,9 @@ import { gsap } from 'gsap';
 
 import type { BaseRevealListProps } from '.';
 
-withDefaults(defineProps<BaseRevealListProps>(), {
+const props = withDefaults(defineProps<BaseRevealListProps>(), {
   active: false,
+  dense: false,
 });
 
 const rootRef = useTemplateRef<HTMLElement>('rootRef');
@@ -79,7 +80,7 @@ onUnmounted(() => {
 <template>
   <div
     ref="rootRef"
-    class="relative ml-x-sm"
+    :class="['relative', props.dense ? 'ml-xx-sm' : 'ml-x-sm']"
   >
     <span
       ref="lineRef"
@@ -88,7 +89,7 @@ onUnmounted(() => {
     />
     <div
       ref="listRef"
-      class="flex flex-col gap-tiny pl-md"
+      :class="['flex flex-col', props.dense ? 'gap-0 pl-sm' : 'gap-tiny pl-md']"
     >
       <slot />
     </div>

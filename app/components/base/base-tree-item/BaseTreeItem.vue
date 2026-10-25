@@ -12,10 +12,26 @@ const props = withDefaults(defineProps<BaseTreeItemProps>(), {
   expandable: false,
   open: false,
   toggleLabel: '',
+  dense: false,
+  interactiveLabel: true,
 });
 
+const rowClass = computed(() =>
+  cn('flex items-center justify-between', props.dense ? 'min-h-0 gap-x-tiny' : 'min-h-md gap-x-sm'),
+);
+
+const labelClass = computed(() =>
+  cn(
+    'min-w-0 flex-1 truncate text-left font-roboto font-medium transition-colors duration-short',
+    props.dense ? 'py-xx-sm text-body-sm' : 'text-body-md',
+    props.selected ? 'text-accent' : 'text-on-surface',
+    props.interactiveLabel &&
+      'hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+  ),
+);
+
 const emit = defineEmits<{
-  select: [];
+  select: [event: MouseEvent];
   'update:open': [value: boolean];
 }>();
 
@@ -27,8 +43,8 @@ function onToggleClick(event: MouseEvent) {
   emit('update:open', !props.open);
 }
 
-function onSelectClick() {
-  emit('select');
+function onSelectClick(event: MouseEvent) {
+  emit('select', event);
 }
 </script>
 
@@ -39,25 +55,27 @@ function onSelectClick() {
     @update:open="emit('update:open', $event)"
   >
     <template #trigger>
-      <div class="flex min-h-md items-center justify-between gap-x-sm">
+      <div :class="rowClass">
         <button
+          v-if="interactiveLabel"
           type="button"
-          :class="
-            cn(
-              'min-w-0 flex-1 truncate text-left font-roboto text-body-md font-medium transition-colors duration-short',
-              props.selected ? 'text-accent' : 'text-on-surface',
-              'hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
-            )
-          "
+          :class="labelClass"
           @click="onSelectClick"
         >
           {{ label }}
         </button>
+        <span
+          v-else
+          :class="labelClass"
+        >
+          {{ label }}
+        </span>
 
         <div class="flex shrink-0 items-center gap-tiny">
           <slot name="actions" />
           <BaseIconButton
             :label="toggleLabel"
+            @mousedown.stop
             @click="onToggleClick"
           >
             <IconChevronRight v-if="!open" />
@@ -67,28 +85,29 @@ function onSelectClick() {
       </div>
     </template>
 
-    <BaseRevealList :active="lineActive">
+    <BaseRevealList
+      :active="lineActive"
+      :dense="dense"
+    >
       <slot />
     </BaseRevealList>
   </BaseCollapsible>
 
-  <div
-    v-else
-    class="flex min-h-md items-center justify-between gap-x-sm"
-  >
+  <div :class="rowClass">
     <button
+      v-if="interactiveLabel"
       type="button"
-      :class="
-        cn(
-          'min-w-0 flex-1 truncate text-left font-roboto text-body-md font-medium transition-colors duration-short',
-          props.selected ? 'text-accent' : 'text-on-surface',
-          'hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
-        )
-      "
+      :class="labelClass"
       @click="onSelectClick"
     >
       {{ label }}
     </button>
+    <span
+      v-else
+      :class="labelClass"
+    >
+      {{ label }}
+    </span>
 
     <div
       v-if="$slots.actions"
