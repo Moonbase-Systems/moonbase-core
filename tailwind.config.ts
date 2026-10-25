@@ -81,6 +81,9 @@ const config = {
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
         'accent-dim': 'rgb(var(--color-accent-dim) / <alpha-value>)',
 
+        'category-layout': 'rgb(var(--color-category-layout) / <alpha-value>)',
+        'category-interactive': 'rgb(var(--color-category-interactive) / <alpha-value>)',
+
         info: 'rgb(var(--color-info) / <alpha-value>)',
         'info-container': 'rgb(var(--color-info-container) / <alpha-value>)',
         warning: 'rgb(var(--color-warning) / <alpha-value>)',
