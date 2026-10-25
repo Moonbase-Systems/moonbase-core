@@ -14,7 +14,7 @@ const emit = defineEmits<{
 }>();
 
 const toneVariants = cva(
-  'w-full rounded-sm px-sm py-xx-sm text-center font-roboto text-body-sm font-normal lowercase text-on-surface transition-colors duration-short focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50',
+  'w-full rounded-sm px-x-sm py-tiny text-center font-roboto text-body-sm leading-snug font-normal lowercase text-on-surface transition-colors duration-short focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       tone: {

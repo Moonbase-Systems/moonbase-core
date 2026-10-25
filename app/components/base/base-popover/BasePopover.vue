@@ -33,14 +33,27 @@ defineExpose({ close });
     </PopoverTrigger>
     <PopoverPortal>
       <PopoverContent
-        side="top"
+        side="right"
         align="end"
-        :side-offset="8"
-        :class="cn('z-50 w-[17rem] max-w-[calc(100vw-2rem)] bg-surface p-tiny shadow-lg outline-none')"
+        :side-offset="6"
+        :align-offset="0"
+        position-strategy="fixed"
+        :avoid-collisions="true"
+        :collision-padding="12"
+        sticky="always"
+        :prioritize-position="true"
+        update-position-strategy="always"
+        :class="
+          cn(
+            'z-50 flex h-[450px] max-h-[calc(100dvh-1.5rem)] w-[300px] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden bg-surface p-x-sm shadow-lg outline-none',
+          )
+        "
         @escape-key-down="close"
         @pointer-down-outside="close"
       >
-        <slot :close="close" />
+        <div class="flex min-h-0 flex-1 flex-col overflow-y-auto">
+          <slot :close="close" />
+        </div>
       </PopoverContent>
     </PopoverPortal>
   </PopoverRoot>
