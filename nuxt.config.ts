@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     scan: false,
   },
   modules: [
+    '@nuxt/icon',
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     '@nuxt/fonts',
