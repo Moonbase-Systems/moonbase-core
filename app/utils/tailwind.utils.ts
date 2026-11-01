@@ -7,6 +7,12 @@ const tailwindMerge = extendTailwindMerge({
       'font-size': [
         {
           text: [
+            'special-high',
+            'special-medium',
+            'special-small',
+            'standard-high',
+            'standard-medium',
+            'standard-small',
             'heading-md',
             'heading-lg',
             'heading-x-lg',

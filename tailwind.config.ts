@@ -11,8 +11,19 @@ const config = {
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        lalezar: ['Lalezar', 'sans-serif'],
       },
       fontSize: {
+        'special-high': ['4.8rem', { lineHeight: 'normal', letterSpacing: '0', fontWeight: '400' }],
+        'special-medium': ['4rem', { lineHeight: 'normal', letterSpacing: '0', fontWeight: '400' }],
+        'special-small': ['3.6rem', { lineHeight: 'normal', letterSpacing: '0', fontWeight: '400' }],
+        'standard-high': ['2.4rem', { lineHeight: '2.9rem', letterSpacing: '0', fontWeight: '500' }],
+        'standard-medium': ['2rem', { lineHeight: '2.4rem', letterSpacing: '0', fontWeight: '500' }],
+        'standard-small': ['1.6rem', { lineHeight: '1.9rem', letterSpacing: '0', fontWeight: '500' }],
+
+        'heading-sm': ['1.6rem', { lineHeight: '2.4rem' }],
+        'heading-xs': ['1.4rem', { lineHeight: '2.2rem' }],
         'heading-md': ['2rem', { lineHeight: '2.8rem' }],
         'heading-lg': ['2.8rem', { lineHeight: '3.6rem' }],
         'heading-x-lg': ['3.6rem', { lineHeight: '4.4rem' }],

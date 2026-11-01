@@ -61,6 +61,7 @@ Tailwind is the **only** permitted styling system. All visual output must be exp
 - Font weights: `font-normal` (400), `font-medium` (500), `font-semibold` (600).
 - Letter spacing: use `tracking-x-sm` through `tracking-xx-lg` from the defined scale.
 - Never hardcode `font-size`, `line-height`, or `font-family` values.
+- The layer properties inspector uses the Figma Special/Standard scale instead of the Roboto body scale: `font-lalezar` with `text-special-high` (48px), `text-special-medium` (40px), `text-special-small` (36px), and `font-inter` with `text-standard-high` (24px), `text-standard-medium` (20px), `text-standard-small` (16px). Prefer `inspectorTypography` from `app/utils/inspector-typography.utils.ts`. Those styles do not include color. The rest of the studio chrome keeps `text-body-*` and `font-roboto`.
 
 ### Color Usage
 
