@@ -5,6 +5,7 @@ export type BaseIconRailItem = {
   id: string;
   label: string;
   icon?: string;
+  iconClass?: string;
   iconComponent?: Component;
   maskUrl?: string;
   boxClass?: string;
