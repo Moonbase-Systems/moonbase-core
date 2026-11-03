@@ -57,7 +57,7 @@ function onSelect(id: string) {
       <Icon
         v-else-if="item.icon"
         :name="item.icon"
-        class="size-[1.35rem]"
+        :class="item.iconClass ?? 'size-[1.35rem]'"
       />
     </button>
   </div>
