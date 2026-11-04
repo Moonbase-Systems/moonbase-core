@@ -23,6 +23,7 @@
     "postinstall": "nuxt prepare",
     "preinstall": "npx only-allow pnpm",
     "typecheck": "nuxt typecheck",
+    "test": "vitest run --passWithNoTests",
     "prepare": "husky",
     "start": "node .output/server/index.mjs sandbox",
     "lint:eslint": "eslint --ext .js,.ts,.vue .",
@@ -77,6 +78,7 @@
     "stylelint-config-standard-vue": "^1.0.0",
     "ts-toolbelt": "^9.6.0",
     "typescript": "^5.9.3",
+    "vitest": "^3.2.7",
     "vue-tsc": "^3.2.4"
   }
 }
