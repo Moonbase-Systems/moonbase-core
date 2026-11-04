@@ -20,7 +20,7 @@
     "preview:sandbox": "nuxt preview sandbox",
     "prepare:sandbox": "nuxt prepare sandbox",
     "prepare:nuxt": "nuxt prepare",
-    "postinstall": "nuxt prepare",
+    "postinstall": "nuxt prepare && nuxt prepare sandbox",
     "preinstall": "npx only-allow pnpm",
     "typecheck": "nuxt typecheck",
     "test": "vitest run --passWithNoTests",
