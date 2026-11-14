@@ -84,7 +84,7 @@ onUnmounted(() => {
   >
     <span
       ref="lineRef"
-      :class="['pointer-events-none absolute inset-y-0 left-0 w-px', active ? 'bg-accent' : 'bg-on-surface']"
+      :class="['pointer-events-none absolute inset-y-0 left-0 w-px', active ? 'bg-accent' : 'bg-line']"
       aria-hidden="true"
     />
     <div

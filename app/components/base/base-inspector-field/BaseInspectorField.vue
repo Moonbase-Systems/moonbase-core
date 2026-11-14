@@ -89,13 +89,14 @@ function onColorInput(event: Event) {
   emit('change', value);
 }
 
-const shellClass = 'border border-transparent bg-[color-mix(in_srgb,white_5%,#050004)] focus-within:border-[#22FF86]';
+const shellClass =
+  'border border-line bg-transparent transition-colors duration-short hover:border-on-surface-dim focus-within:border-accent';
 </script>
 
 <template>
   <label
     v-if="type === 'color'"
-    :class="cn('relative block size-[32px] shrink-0 cursor-pointer rounded-full', shellClass, props.class)"
+    :class="cn('relative block size-control shrink-0 cursor-pointer border-on-surface-dim', shellClass, props.class)"
     :style="{ backgroundColor: String(modelValue) }"
   >
     <input
@@ -109,7 +110,7 @@ const shellClass = 'border border-transparent bg-[color-mix(in_srgb,white_5%,#05
   </label>
   <div
     v-else
-    :class="cn(shellClass, 'flex h-[24px] min-w-0 items-center px-[4px]', props.class)"
+    :class="cn(shellClass, 'flex h-row min-w-0 items-center px-tiny', props.class)"
   >
     <input
       :value="draft"
@@ -117,7 +118,7 @@ const shellClass = 'border border-transparent bg-[color-mix(in_srgb,white_5%,#05
       inputmode="decimal"
       autocomplete="off"
       :disabled="disabled"
-      class="min-w-0 flex-1 border-0 bg-transparent p-0 font-inter text-body-sm font-medium tracking-normal text-white outline-none disabled:opacity-50"
+      class="min-w-0 flex-1 border-0 bg-transparent p-0 font-sans text-body-sm font-normal tabular-nums text-on-surface outline-none disabled:text-on-surface-dim"
       @focus="onFocus"
       @beforeinput="onBeforeInput"
       @input="onInput"
@@ -127,7 +128,7 @@ const shellClass = 'border border-transparent bg-[color-mix(in_srgb,white_5%,#05
     />
     <span
       v-if="suffix"
-      class="shrink-0 font-inter text-body-sm font-medium tracking-normal text-white"
+      class="ml-x-tiny shrink-0 font-mono text-label uppercase text-on-surface-dim"
       aria-hidden="true"
     >
       {{ suffix }}

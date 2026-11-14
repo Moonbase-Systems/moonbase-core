@@ -22,7 +22,7 @@ const rowClass = computed(() =>
 
 const labelClass = computed(() =>
   cn(
-    'min-w-0 flex-1 truncate text-left font-roboto font-medium transition-colors duration-short',
+    'min-w-0 flex-1 truncate text-left font-sans font-normal transition-colors duration-short',
     props.dense ? 'py-xx-sm text-body-sm' : 'text-body-md',
     props.selected ? 'text-accent' : 'text-on-surface',
     props.interactiveLabel &&

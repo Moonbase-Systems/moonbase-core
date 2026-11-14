@@ -24,8 +24,8 @@ const cursorOn = ref(true);
 </script>
 
 <template>
-  <div class="min-h-[100dvh] bg-surface p-lg font-roboto text-on-surface">
-    <h1 class="mb-lg text-center text-heading-sm">Property inspector primitives</h1>
+  <div class="min-h-[100dvh] bg-surface p-lg font-sans text-on-surface">
+    <h1 class="mb-lg text-center text-title font-light">Property inspector primitives</h1>
 
     <div class="mx-auto flex max-w-5xl flex-col gap-lg">
       <BasePropertyCard title="screen">
@@ -135,7 +135,7 @@ const cursorOn = ref(true);
           <BaseColorSwatch v-model="color" />
         </div>
         <div class="mt-xx-sm flex flex-wrap items-end gap-md">
-          <span class="font-roboto text-body-x-sm lowercase text-accent">space</span>
+          <span class="font-mono text-label uppercase text-accent">space</span>
           <BaseValueField
             v-model="letterSpacing"
             label="letters"

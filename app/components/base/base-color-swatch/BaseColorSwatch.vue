@@ -32,14 +32,14 @@ function onPickerChange(event: Event) {
   <div :class="cn('flex flex-col items-start gap-x-tiny', props.class)">
     <span
       v-if="label"
-      class="font-roboto text-body-x-sm lowercase leading-none text-on-surface-dim"
+      class="font-mono text-label uppercase text-on-surface-dim"
     >
       {{ label }}
     </span>
     <button
       type="button"
       :disabled="disabled"
-      class="size-6 shrink-0 rounded-x-sm border border-on-surface-dim/40 p-0 disabled:opacity-50"
+      class="size-xx-lg shrink-0 border border-on-surface-dim p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed disabled:border-dashed"
       :style="{ backgroundColor: modelValue }"
       :aria-label="label ?? modelValue"
       @click="openPicker"

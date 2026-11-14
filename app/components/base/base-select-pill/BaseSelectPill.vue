@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { cn } from '../../../utils/tailwind.utils';
+import IconChevronDown from '../../icons/IconChevronDown.vue';
 import type { BaseSelectPillProps } from '.';
 
 const props = withDefaults(defineProps<BaseSelectPillProps>(), {
@@ -20,17 +21,17 @@ function onClick(event: MouseEvent) {
 
 <template>
   <div :class="cn('flex min-w-0 flex-col', props.class)">
-    <span class="mb-[0.2rem] block font-roboto text-[10px] lowercase leading-none text-on-surface">
+    <span class="mb-x-tiny block font-mono text-label uppercase text-on-surface-dim">
       {{ label }}
     </span>
     <button
       type="button"
       :disabled="disabled"
-      class="flex h-[1.375rem] min-w-[5.5rem] items-center justify-between gap-x-sm rounded-[0.2rem] bg-surface-container px-[0.45rem] font-roboto text-[11px] leading-none text-on-surface transition-colors hover:bg-surface-container/90 disabled:opacity-50"
+      class="flex h-control min-w-[14.4rem] items-center justify-between gap-xxx-sm border border-line bg-transparent px-xxx-sm font-sans text-body-sm text-on-surface transition-colors duration-short hover:border-on-surface-dim focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed disabled:border-dashed disabled:text-on-surface-dim"
       @click="onClick"
     >
-      <span class="truncate lowercase">{{ value }}</span>
-      <span class="text-[10px] text-on-surface-dim">&gt;</span>
+      <span class="truncate">{{ value }}</span>
+      <IconChevronDown class="size-md text-on-surface-dim" />
     </button>
   </div>
 </template>

@@ -19,7 +19,7 @@ function onSelect(id: string) {
 
 <template>
   <div
-    :class="cn('flex shrink-0 flex-col items-center gap-[7px]', props.class)"
+    :class="cn('flex shrink-0 flex-col items-center gap-xxx-sm', props.class)"
     role="group"
   >
     <button
@@ -29,9 +29,10 @@ function onSelect(id: string) {
       :aria-label="item.label"
       :aria-pressed="isActive(item.id)"
       :class="[
-        'flex size-10 items-center justify-center transition-colors',
+        'flex size-x-huge items-center justify-center border transition-colors duration-short',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
         item.boxClass,
-        isActive(item.id) ? 'text-[#22FF86]' : 'text-white',
+        isActive(item.id) ? 'border-line text-accent' : 'border-transparent text-on-surface-dim hover:text-on-surface',
       ]"
       @click="onSelect(item.id)"
     >

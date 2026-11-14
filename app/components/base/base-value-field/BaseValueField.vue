@@ -37,17 +37,17 @@ function onChange(event: Event) {
 </script>
 
 <template>
-  <div :class="cn('flex items-center gap-[6px]', props.class)">
+  <div :class="cn('flex items-center gap-xxx-sm', props.class)">
     <span
       v-if="label.trim()"
-      :class="cn(inspectorTypography.standardMedium, 'shrink-0 text-white')"
+      :class="cn(inspectorTypography.label, 'shrink-0 text-on-surface-dim')"
     >
       {{ label }}
     </span>
     <div
       :class="
         cn(
-          'flex h-[36px] w-full min-w-0 max-w-[90px] shrink items-center justify-between bg-[color-mix(in_srgb,white_5%,#050004)] px-[5px] py-[6px]',
+          'flex h-control w-full min-w-0 max-w-[10.4rem] shrink items-center justify-between border border-line px-xxx-sm transition-colors duration-short focus-within:border-accent hover:border-on-surface-dim',
           props.fieldClass,
         )
       "
@@ -60,7 +60,7 @@ function onChange(event: Event) {
         :class="
           cn(
             valueTypeClass,
-            'min-w-0 flex-1 border-0 bg-transparent p-0 text-left text-white outline-none disabled:opacity-50',
+            'min-w-0 flex-1 border-0 bg-transparent p-0 text-left text-on-surface outline-none disabled:text-on-surface-dim',
           )
         "
         @input="onInput"
@@ -68,26 +68,26 @@ function onChange(event: Event) {
       />
       <span
         v-if="suffix"
-        :class="cn(valueTypeClass, 'shrink-0 text-white')"
+        :class="cn(inspectorTypography.label, 'shrink-0 text-on-surface-dim')"
       >
         {{ suffix }}
       </span>
       <span
         v-if="fieldSuffix === 'horizontal'"
-        class="size-6 shrink-0 text-white"
+        class="size-md shrink-0 text-on-surface-dim"
       >
         <IconInspectorArrowH />
       </span>
       <span
         v-else-if="fieldSuffix === 'vertical'"
-        class="size-6 shrink-0 rotate-90 text-white"
+        class="size-md shrink-0 rotate-90 text-on-surface-dim"
       >
         <IconInspectorArrowH />
       </span>
       <button
         v-if="showLock"
         type="button"
-        class="size-6 shrink-0 text-white/10"
+        class="size-md shrink-0 text-line"
         tabindex="-1"
         aria-hidden="true"
         @click="emit('lock-click')"

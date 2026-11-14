@@ -27,8 +27,8 @@ function toggle() {
     <span
       :class="
         props.labelTypography === 'inspector'
-          ? 'font-inter text-body-sm font-medium tracking-normal text-white'
-          : 'font-roboto text-body-x-sm lowercase leading-none text-on-surface-dim'
+          ? 'font-sans text-body-sm font-normal text-on-surface'
+          : 'font-mono text-label uppercase text-on-surface-dim'
       "
     >
       {{ label }}
@@ -37,14 +37,15 @@ function toggle() {
       type="button"
       role="switch"
       :aria-checked="modelValue"
+      :aria-label="label"
       :disabled="disabled"
-      class="flex size-5 shrink-0 items-center justify-center rounded-full border border-on-surface-dim/40 transition-colors disabled:opacity-50"
-      :class="modelValue ? 'border-accent' : ''"
+      class="flex size-x-lg shrink-0 items-center justify-center border transition-colors duration-short focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed disabled:border-dashed"
+      :class="modelValue ? 'border-accent' : 'border-on-surface-dim'"
       @click="toggle"
     >
       <span
-        class="size-2 rounded-full transition-colors"
-        :class="modelValue ? 'bg-accent' : 'bg-transparent'"
+        class="size-xx-sm transition-colors duration-short"
+        :class="modelValue ? (disabled ? 'bg-on-surface-dim' : 'bg-accent') : 'bg-transparent'"
       />
     </button>
   </div>

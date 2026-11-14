@@ -30,9 +30,9 @@ function onClick(event: MouseEvent) {
     :class="
       cn(
         'inline-flex shrink-0 items-center justify-center text-on-surface transition-colors duration-short',
-        'hover:text-on-surface-dim',
+        'hover:text-accent active:text-accent-dim',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
-        'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+        'disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-on-surface-dim',
         props.class,
       )
     "

@@ -20,13 +20,11 @@ const props = withDefaults(defineProps<BaseScrubFieldProps>(), {
 
 const valueTypeClass = computed(() =>
   props.compact
-    ? 'font-inter text-body-sm font-medium tracking-normal text-white'
-    : cn(inspectorFieldTypography(props.valueTypography), 'text-white'),
+    ? cn(inspectorTypography.value, 'text-on-surface')
+    : cn(inspectorFieldTypography(props.valueTypography), 'text-on-surface'),
 );
 
-const labelTypeClass = computed(() =>
-  props.compact ? valueTypeClass.value : cn(inspectorTypography.standardMedium, 'text-white'),
-);
+const labelTypeClass = computed(() => cn(inspectorTypography.label, 'text-on-surface-dim'));
 
 const emit = defineEmits<{
   'update:modelValue': [value: string];
@@ -115,7 +113,7 @@ function onScrubUp(event: PointerEvent) {
 </script>
 
 <template>
-  <div :class="cn('flex items-center gap-[6px]', props.class)">
+  <div :class="cn('flex items-center gap-xxx-sm', props.class)">
     <span
       v-if="label.trim()"
       :class="cn(labelTypeClass, 'shrink-0')"
@@ -125,9 +123,9 @@ function onScrubUp(event: PointerEvent) {
     <div
       :class="
         cn(
-          props.compact
-            ? 'flex h-[24px] w-full min-w-0 shrink items-center justify-between bg-[color-mix(in_srgb,white_5%,#050004)] px-[4px]'
-            : 'flex h-[36px] w-full min-w-0 max-w-[90px] shrink items-center justify-between bg-[color-mix(in_srgb,white_5%,#050004)] px-[5px] py-[6px]',
+          'flex w-full min-w-0 shrink items-center justify-between border border-line bg-transparent transition-colors duration-short focus-within:border-accent hover:border-on-surface-dim',
+          props.compact ? 'h-row px-tiny' : 'h-control max-w-[10.4rem] px-xxx-sm',
+          disabled && 'border-dashed hover:border-line',
           props.fieldClass,
         )
       "
@@ -139,7 +137,10 @@ function onScrubUp(event: PointerEvent) {
           inputmode="decimal"
           :disabled="disabled"
           :class="
-            cn(valueTypeClass, 'min-w-[1ch] border-0 bg-transparent p-0 text-left outline-none disabled:opacity-50')
+            cn(
+              valueTypeClass,
+              'min-w-[1ch] border-0 bg-transparent p-0 text-left outline-none disabled:text-on-surface-dim',
+            )
           "
           :style="{ width: `${Math.max(draft.length, 1)}ch` }"
           @focus="onFocus"
@@ -149,7 +150,7 @@ function onScrubUp(event: PointerEvent) {
         />
         <span
           v-if="suffix"
-          :class="cn(valueTypeClass, 'shrink-0')"
+          :class="cn(inspectorTypography.label, 'ml-tiny shrink-0 text-on-surface-dim')"
         >
           {{ suffix }}
         </span>
@@ -159,7 +160,7 @@ function onScrubUp(event: PointerEvent) {
         type="button"
         :class="
           cn(
-            'shrink-0 cursor-ns-resize touch-none text-white',
+            'shrink-0 cursor-ns-resize touch-none text-on-surface-dim hover:text-on-surface',
             compact ? 'size-4' : 'size-6',
             fieldSuffix === 'vertical' && 'rotate-90',
           )
@@ -176,7 +177,7 @@ function onScrubUp(event: PointerEvent) {
       <button
         v-if="showLock"
         type="button"
-        class="shrink-0 text-white/10"
+        class="shrink-0 text-line"
         :class="compact ? 'size-4' : 'size-6'"
         tabindex="-1"
         aria-hidden="true"
