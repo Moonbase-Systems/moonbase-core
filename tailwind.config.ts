@@ -3,6 +3,10 @@ import type { Config } from 'tailwindcss';
 
 import rootFontSize from './tailwind/plugins/root-font-size';
 
+/**
+ * MoonBase — Orbit. Values mirror the "MoonBase Studio Design System" (tokens.json v2).
+ * 1rem = 10px (root-font-size plugin).
+ */
 const config = {
   content: [],
   darkMode: ['class', '.theme-dark'],
@@ -10,52 +14,61 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        roboto: ['Roboto', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
-        lalezar: ['Lalezar', 'sans-serif'],
+        /** Space Grotesk — the one UI face: 300 for large sizes, 400 text, 700 state. */
+        sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        /** Space Mono — labels, units, state words, upper case. */
+        mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
+        /** Lalezar — the MoonBase wordmark only. */
+        brand: ['Lalezar', '"Space Grotesk"', 'sans-serif'],
       },
       fontSize: {
-        'special-high': ['4.8rem', { lineHeight: 'normal', letterSpacing: '0', fontWeight: '400' }],
-        'special-medium': ['4rem', { lineHeight: 'normal', letterSpacing: '0', fontWeight: '400' }],
-        'special-small': ['3.6rem', { lineHeight: 'normal', letterSpacing: '0', fontWeight: '400' }],
-        'standard-high': ['2.4rem', { lineHeight: '2.9rem', letterSpacing: '0', fontWeight: '500' }],
-        'standard-medium': ['2rem', { lineHeight: '2.4rem', letterSpacing: '0', fontWeight: '500' }],
-        'standard-small': ['1.6rem', { lineHeight: '1.9rem', letterSpacing: '0', fontWeight: '500' }],
+        /* Telemetry — shared with the Commander 7" screen */
+        display: ['9.6rem', { lineHeight: '9.2rem', letterSpacing: '-0.03em', fontWeight: '300' }],
+        'numeric-xl': ['12rem', { lineHeight: '11.2rem', letterSpacing: '-0.04em', fontWeight: '300' }],
+        'numeric-lg': ['4.8rem', { lineHeight: '5.2rem', fontWeight: '300' }],
+        title: ['2.8rem', { lineHeight: '3.6rem', fontWeight: '300' }],
+        'body-lg': ['1.8rem', { lineHeight: '2.6rem' }],
+        state: ['1.4rem', { lineHeight: '2rem', fontWeight: '700' }],
 
-        'heading-sm': ['1.6rem', { lineHeight: '2.4rem' }],
-        'heading-xs': ['1.4rem', { lineHeight: '2.2rem' }],
-        'heading-md': ['2rem', { lineHeight: '2.8rem' }],
-        'heading-lg': ['2.8rem', { lineHeight: '3.6rem' }],
-        'heading-x-lg': ['3.6rem', { lineHeight: '4.4rem' }],
-        'heading-x-huge': ['6.4rem', { lineHeight: '7.6rem' }],
+        /* Mono labels (use with font-mono uppercase) */
+        label: ['1.2rem', { lineHeight: '1.6rem', letterSpacing: '0.14em' }],
+        'label-lg': ['1.4rem', { lineHeight: '2rem', letterSpacing: '0.12em' }],
 
-        'body-x-sm': ['1.2rem', { lineHeight: '1.6rem' }],
-        'body-sm': ['1.4rem', { lineHeight: '2rem' }],
+        /* Studio UI */
+        'numeric-md': ['2rem', { lineHeight: '2.4rem', fontWeight: '300' }],
         'body-md': ['1.6rem', { lineHeight: '2.4rem' }],
-        'body-lg': ['1.8rem', { lineHeight: '2.8rem' }],
+        'body-sm': ['1.4rem', { lineHeight: '2rem' }],
+        'body-x-sm': ['1.2rem', { lineHeight: '1.6rem' }],
+
+        /* Brand */
+        'brand-logo': ['2.8rem', { lineHeight: '3.6rem', fontWeight: '400' }],
       },
       fontWeight: {
+        light: '300',
         normal: '400',
-        medium: '500',
-        semibold: '600',
+        bold: '700',
       },
       letterSpacing: {
-        'x-sm': '-0.02rem',
-        sm: '-0.01rem',
-        md: '0rem',
-        lg: '0rem',
-        'x-lg': '0.02rem',
-        'xx-lg': '0.04rem',
+        tight: '-0.03em',
+        label: '0.14em',
+        'label-lg': '0.12em',
       },
       borderRadius: {
-        none: '0rem',
-        'x-sm': '0.2rem',
-        sm: '0.4rem',
-        md: '0.8rem',
-        lg: '1.6rem',
+        /* Orbit: no rounding anywhere. The status dot uses rounded-full. */
+        DEFAULT: '0',
+        none: '0',
+        'x-sm': '0',
+        sm: '0',
+        md: '0',
+        lg: '0',
         full: '9999px',
       },
       spacing: {
+        /*
+         * Named scale kept for compatibility. Orbit uses the 4px grid members:
+         * tiny 4 · xxx-sm 8 · x-sm 12 · md 16 · xx-lg 24 · xxxx-lg 32 · xxx-huge 48 (x-tiny 2 for hairline gaps).
+         * Size tokens: bar 48 · control 32 · row 28 · bracket 12.
+         */
         none: '0',
         'x-tiny': '0.2rem',
         tiny: '0.4rem',
@@ -75,6 +88,11 @@ const config = {
         'xx-huge': '4.4rem',
         'xxx-huge': '4.8rem',
         'xxxx-huge': '5.2rem',
+        bar: '4.8rem',
+        control: '3.2rem',
+        row: '2.8rem',
+        bracket: '1.2rem',
+        key: '12.8rem',
       },
       colors: {
         current: 'currentColor',
@@ -83,7 +101,9 @@ const config = {
 
         surface: 'rgb(var(--color-surface) / <alpha-value>)',
         'surface-container': 'rgb(var(--color-surface-container) / <alpha-value>)',
+        'surface-container-high': 'rgb(var(--color-surface-container-high) / <alpha-value>)',
         'surface-inverted': 'rgb(var(--color-surface-inverted) / <alpha-value>)',
+        line: 'rgb(var(--color-line) / <alpha-value>)',
 
         'on-surface': 'rgb(var(--color-on-surface) / <alpha-value>)',
         'on-surface-dim': 'rgb(var(--color-on-surface-dim) / <alpha-value>)',
@@ -91,9 +111,11 @@ const config = {
 
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
         'accent-dim': 'rgb(var(--color-accent-dim) / <alpha-value>)',
+        'on-accent': 'rgb(var(--color-on-accent) / <alpha-value>)',
 
         'category-layout': 'rgb(var(--color-category-layout) / <alpha-value>)',
         'category-interactive': 'rgb(var(--color-category-interactive) / <alpha-value>)',
+        'category-interactive-fill': 'rgb(var(--color-category-interactive-fill) / <alpha-value>)',
 
         info: 'rgb(var(--color-info) / <alpha-value>)',
         'info-container': 'rgb(var(--color-info-container) / <alpha-value>)',
@@ -103,6 +125,7 @@ const config = {
         'error-container': 'rgb(var(--color-error-container) / <alpha-value>)',
         success: 'rgb(var(--color-success) / <alpha-value>)',
         'success-container': 'rgb(var(--color-success-container) / <alpha-value>)',
+        'on-status': 'rgb(var(--color-on-status) / <alpha-value>)',
       },
       transitionDuration: {
         short: '200ms',

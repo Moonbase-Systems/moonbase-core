@@ -58,8 +58,11 @@ export default defineNuxtConfig({
   ],
   googleFonts: {
     families: {
-      Roboto: '400..700',
+      'Space Grotesk': [300, 400, 700],
+      'Space Mono': [400],
+      Lalezar: true,
     },
+    subsets: ['latin', 'latin-ext'],
     preload: true,
   },
   fonts: {
@@ -71,6 +74,6 @@ export default defineNuxtConfig({
     provider: 'local',
   },
   fontMetrics: {
-    fonts: ['Roboto', { family: 'Roboto' }],
+    fonts: ['Space Grotesk', 'Space Mono'],
   },
 });
