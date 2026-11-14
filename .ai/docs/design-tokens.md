@@ -10,8 +10,9 @@ Tokens are the single source of truth for shared visual values used by Moonbase 
 
 ## Source of Truth
 
-- Core token definitions are stored in `app/assets/css/tokens.css`.
-- Tailwind token mapping and scale extensions are configured in `tailwind.config.ts`.
+- The design source is the **MoonBase Studio Design System** (claude.ai artifact, direction "Orbit", `tokens.json` v2). It is shared with the Moonbase Commander 7" screen (`electronics/moonbase-commander/docs/ekran-7.md`, section 2). Change values there first, then mirror them here.
+- Core token definitions are stored in `app/assets/css/tokens.css` (one dark theme; `accent` = signal, `surface-container` = panel, `surface-container-high` = raised, `line`).
+- Tailwind token mapping and scale extensions are configured in `tailwind.config.ts` (Space Grotesk / Space Mono / Lalezar, Orbit type scale, radius 0, size tokens `bar`, `control`, `row`, `bracket`, `key`).
 - Extra Tailwind behavior can be added in `tailwind/plugins/*` (for example root font sizing).
 
 ---
