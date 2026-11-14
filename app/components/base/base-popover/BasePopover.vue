@@ -45,7 +45,7 @@ defineExpose({ close });
         update-position-strategy="always"
         :class="
           cn(
-            'z-50 flex h-[450px] max-h-[calc(100dvh-1.5rem)] w-[300px] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden bg-surface p-x-sm shadow-lg outline-none',
+            'z-50 flex h-[450px] max-h-[calc(100dvh-1.5rem)] w-[300px] max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden border border-line bg-surface-container p-x-sm outline-none',
           )
         "
         @escape-key-down="close"

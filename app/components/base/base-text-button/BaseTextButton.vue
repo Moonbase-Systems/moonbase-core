@@ -105,7 +105,12 @@ function onClick(event: MouseEvent) {
     :disabled="disabled"
     :aria-disabled="disabled"
     :aria-current="active ? 'page' : undefined"
-    :class="cn('font-sans text-body-md font-medium', props.class)"
+    :class="
+      cn(
+        'font-sans text-body-md font-normal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-not-allowed',
+        props.class,
+      )
+    "
     @click="onClick"
     @pointerenter="onPointerEnter"
     @pointerleave="onPointerLeave"

@@ -13,7 +13,7 @@
       cx="13.5"
       cy="13.5"
       r="2.1"
-      fill="#050004"
+      fill="rgb(var(--color-surface))"
     />
   </svg>
 </template>

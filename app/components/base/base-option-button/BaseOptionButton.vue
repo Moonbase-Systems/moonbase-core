@@ -14,13 +14,13 @@ const emit = defineEmits<{
 }>();
 
 const toneVariants = cva(
-  'w-full rounded-sm px-x-sm py-tiny text-center font-roboto text-body-sm leading-snug font-normal lowercase text-on-surface transition-colors duration-short focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:opacity-50',
+  'w-full border border-transparent bg-surface-container-high px-x-sm py-tiny text-left font-sans text-body-sm font-normal text-on-surface transition-colors duration-short focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:border-dashed disabled:border-line disabled:bg-transparent disabled:text-on-surface-dim',
   {
     variants: {
       tone: {
-        accent: 'bg-surface-container hover:bg-surface-container/80',
-        layout: 'bg-surface-container hover:bg-surface-container/80',
-        interactive: 'bg-category-interactive/20 hover:bg-category-interactive/30',
+        accent: 'hover:border-accent hover:bg-surface',
+        layout: 'hover:border-category-layout hover:bg-surface',
+        interactive: 'hover:border-category-interactive hover:bg-category-interactive-fill',
       },
     },
     defaultVariants: {

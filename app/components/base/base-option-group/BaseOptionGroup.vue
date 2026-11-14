@@ -2,26 +2,14 @@
 import { cva } from 'class-variance-authority';
 
 import { cn } from '../../../utils/tailwind.utils';
+import BaseFrameBrackets from '../base-frame/BaseFrameBrackets.vue';
 import type { BaseOptionGroupProps } from '.';
 
 const props = withDefaults(defineProps<BaseOptionGroupProps>(), {
   tone: 'accent',
 });
 
-const sectionVariants = cva('gap-tiny flex flex-col border border-dashed px-x-sm py-x-sm', {
-  variants: {
-    tone: {
-      accent: 'border-accent',
-      layout: 'border-category-layout',
-      interactive: 'border-category-interactive',
-    },
-  },
-  defaultVariants: {
-    tone: 'accent',
-  },
-});
-
-const titleVariants = cva('font-roboto text-body-sm leading-snug font-semibold lowercase', {
+const titleVariants = cva('mb-xx-sm font-mono text-label font-normal uppercase', {
   variants: {
     tone: {
       accent: 'text-accent',
@@ -36,7 +24,8 @@ const titleVariants = cva('font-roboto text-body-sm leading-snug font-semibold l
 </script>
 
 <template>
-  <section :class="cn(sectionVariants({ tone: props.tone }), props.class)">
+  <section :class="cn('relative flex flex-col gap-tiny border border-line p-x-sm', props.class)">
+    <BaseFrameBrackets :tone="props.tone" />
     <h3 :class="cn(titleVariants({ tone: props.tone }))">
       {{ title }}
     </h3>
