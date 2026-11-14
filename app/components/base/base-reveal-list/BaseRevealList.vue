@@ -6,6 +6,7 @@ import type { BaseRevealListProps } from '.';
 const props = withDefaults(defineProps<BaseRevealListProps>(), {
   active: false,
   dense: false,
+  showRail: true,
 });
 
 const rootRef = useTemplateRef<HTMLElement>('rootRef');
@@ -18,7 +19,7 @@ onMounted(() => {
   const root = rootRef.value;
   const line = lineRef.value;
   const list = listRef.value;
-  if (!root || !line || !list) {
+  if (!root || !list) {
     return;
   }
 
@@ -35,7 +36,10 @@ onMounted(() => {
         const reduce = Boolean(context.conditions?.reduce);
 
         if (reduce || items.length === 0) {
-          gsap.set([line, ...items], { autoAlpha: 1, y: 0 });
+          gsap.set(items, { autoAlpha: 1, y: 0 });
+          if (line) {
+            gsap.set(line, { autoAlpha: 1, y: 0 });
+          }
           return;
         }
 
@@ -43,21 +47,21 @@ onMounted(() => {
         const duration = 0.28;
         const total = duration + each * (items.length - 1);
 
-        gsap
-          .timeline({ defaults: { overwrite: 'auto' } })
-          .fromTo(
-            items,
-            { autoAlpha: 0, y: -8 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration,
-              stagger: each,
-              ease: 'power2.out',
-            },
-            0,
-          )
-          .fromTo(
+        const timeline = gsap.timeline({ defaults: { overwrite: 'auto' } });
+        timeline.fromTo(
+          items,
+          { autoAlpha: 0, y: -8 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration,
+            stagger: each,
+            ease: 'power2.out',
+          },
+          0,
+        );
+        if (line) {
+          timeline.fromTo(
             line,
             { autoAlpha: 0 },
             {
@@ -67,6 +71,7 @@ onMounted(() => {
             },
             0,
           );
+        }
       },
     );
   }, root);
@@ -83,6 +88,7 @@ onUnmounted(() => {
     :class="['relative', props.dense ? 'ml-xx-sm' : 'ml-x-sm']"
   >
     <span
+      v-if="showRail"
       ref="lineRef"
       :class="['pointer-events-none absolute inset-y-0 left-0 w-px', active ? 'bg-accent' : 'bg-line']"
       aria-hidden="true"
